@@ -2,6 +2,8 @@ package com.zbf.common.entity;
 
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * @author CX
  * @PACKAGENAME:com.zbf.common.entity
@@ -19,8 +21,9 @@ public class Dats {
     private String tel;
     private String buMen;
     private String salt;
-
+    private Date createTime;
     private String email;
+    private Date updateTime;
 
 
 }

@@ -6,9 +6,10 @@ package com.cx.controller;
 import com.cx.dao.UserDao;
 import com.zbf.common.entity.Dats;
 import com.zbf.common.entity.ResponseResult;
-import com.zbf.common.utils.FreemarkerUtils;
+
 import com.zbf.common.utils.MailQQUtils;
 import com.zbf.common.utils.RandomUtil;
+import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,6 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -154,15 +160,11 @@ public class MesCtr {
         if (isEmail(dats.getTel())){
             String encode = bCryptPasswordEncoder.encode(dats.getPassWord());
             int i = userDao.updByEmail(dats.getTel(), encode);
-            if (i>0){
-                responseResult.setCode(200);
-            }
+            responseResult.setCode(200);
         }else if (isPhone(dats.getTel())){
             String encode = bCryptPasswordEncoder.encode(dats.getPassWord());
             int i = userDao.updByTel(dats.getTel(), encode);
-            if (i>0){
-                responseResult.setCode(200);
-            }
+            responseResult.setCode(200);
         }else {
             responseResult.setCode(500);
         }
@@ -171,18 +173,19 @@ public class MesCtr {
         return  responseResult;
     }
 
-    @RequestMapping("toRegister")
-    public ResponseResult toRegister(Dats dats){
-        ResponseResult responseResult=new ResponseResult();
-        if (userDao.getUserByEmail(dats.getEmail())==null){
-
-        }else {
-            responseResult.setCode(500);
-            responseResult.setMsg("此邮箱已经被注册请换一个重试");
-        }
-        return responseResult;
-
+    @RequestMapping("havaphone")
+    public boolean phone(String tel){
+        return  havephone(tel);
+    };
+    @RequestMapping("havaemail")
+    public boolean mail(String email){
+        return  haveemail(email);
+    };
+    @RequestMapping("havalogname")
+    public boolean login(String name){
+        return haveuser(name);
     }
+
 
 
 
@@ -212,12 +215,29 @@ public class MesCtr {
 
     }
 
-    @RequestMapping("tesfremake")
-    public boolean fremake(HttpServletRequest httpServletRequest){
-        FreemarkerUtils.getStaticHtml(httpServletRequest.getClass(),httpServletRequest.getServletPath());
 
 
-    return true;
+
+    public  boolean havephone(String tel){
+        if (userDao.getUserByTel(tel)==null){
+            return false;
+        }
+        return true;
+    };
+
+
+    public boolean haveemail(String email){
+        if (userDao.getUserByEmail(email)==null){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean haveuser(String username){
+        if (userDao.getUserByUserName(username)==null){
+                return false;
+        }
+        return true;
     }
 
     /**

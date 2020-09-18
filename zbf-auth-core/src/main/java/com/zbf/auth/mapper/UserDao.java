@@ -13,7 +13,11 @@ import java.util.Map;
  */
 @Mapper
 public interface UserDao {
-
+    /**
+     * 登录名查user
+     * @param userName
+     * @return
+     */
     @Select("select * from base_user where loginName=#{userName}")
     public Map<String, Object> getUserByUserName(String userName);
     /**

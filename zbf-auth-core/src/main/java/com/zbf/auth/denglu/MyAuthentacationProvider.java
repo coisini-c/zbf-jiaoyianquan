@@ -47,6 +47,7 @@ public class MyAuthentacationProvider implements AuthenticationProvider {
         //根据用户名获取用户的信息，这里调用根据用户名获取用户信息的UserServiceDetail类
         UserDetails userDetails = myUserServiceDetail.loadUserByUsername(userName);
         String password1 = userDetails.getPassword();
+
         if (isPhone(userName)){
             System.err.println("zheshidianhua");
         }
