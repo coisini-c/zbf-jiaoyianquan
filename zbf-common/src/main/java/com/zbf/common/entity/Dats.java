@@ -3,6 +3,7 @@ package com.zbf.common.entity;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author CX
@@ -12,7 +13,7 @@ import java.util.Date;
  * @date 2020/9/1321:10
  */
 @Data
-public class Dats {
+public class Dats<t> {
     private int id;
     private int version;
     private String userName;
@@ -24,6 +25,12 @@ public class Dats {
     private Date createTime;
     private String email;
     private Date updateTime;
+    private Integer pagenum;
+    private Integer pagesize;
+    private Integer totals;
+    private List<t> dat;
+    private String roleName;
+
 
 
 }
