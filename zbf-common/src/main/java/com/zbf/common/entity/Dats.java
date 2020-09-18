@@ -14,8 +14,8 @@ import java.util.List;
  */
 @Data
 public class Dats<t> {
-    private int id;
-    private int version;
+    private Long id;
+    private Integer version;
     private String userName;
     private String loginName;
     private String passWord;
@@ -30,6 +30,7 @@ public class Dats<t> {
     private Integer totals;
     private List<t> dat;
     private String roleName;
+    private Integer[] ids;
 
 
 
