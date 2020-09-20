@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author CX
@@ -31,6 +32,15 @@ public class Dats<t> {
     private List<t> dat;
     private String roleName;
     private Integer[] ids;
+    private Integer size;
+    private String excleName;
+    private String[] type;
+    private String order;
+    private Integer total;
+    private String orderType[];
+
+
+
 
 
 

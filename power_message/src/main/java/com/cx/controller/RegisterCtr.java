@@ -39,7 +39,11 @@ public class RegisterCtr {
     private UserDao userDao;
     private  String activePath="http://192.168.238.1:10011/activeUser";
 
-
+    /**
+     * 注册
+     * @param dats
+     * @return
+     */
     @RequestMapping("toRegister")
     public ResponseResult toRegister(@RequestBody Dats dats){
         dats.setVersion(1);
