@@ -12,6 +12,7 @@ import com.zbf.common.utils.UID;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,9 +48,15 @@ public class RegisterCtr {
     @RequestMapping("toRegister")
     public ResponseResult toRegister(@RequestBody Dats dats){
         dats.setVersion(1);
+        dats.setStatus(0);
+
+
         dats.setCreateTime(new Date());
         System.err.println("注册的数据是+"+dats);
         ResponseResult responseResult=new ResponseResult();
+        BCryptPasswordEncoder bCryptPasswordEncoder=new BCryptPasswordEncoder();
+        dats.setPassWord(bCryptPasswordEncoder.encode(dats.getPassWord()));
+
         int insertuser = userDao.insertuser(dats);
         if (insertuser>0){
             String loginName = dats.getLoginName();

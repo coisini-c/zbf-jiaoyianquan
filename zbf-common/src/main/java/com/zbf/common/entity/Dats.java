@@ -26,8 +26,8 @@ public class Dats<t> {
     private Date createTime;
     private String email;
     private Date updateTime;
-    private Integer pagenum;
-    private Integer pagesize;
+    private Integer pagenum=1;
+    private Integer pagesize=3;
     private Integer totals;
     private List<t> dat;
     private String roleName;
@@ -38,6 +38,8 @@ public class Dats<t> {
     private String order;
     private Integer total;
     private String orderType[];
+    private Integer sex;
+    private Integer status;
 
 
 

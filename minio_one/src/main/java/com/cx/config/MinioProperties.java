@@ -3,12 +3,15 @@ package com.cx.config;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+
+
 /**
- * @Description: TODO
- * @author: LH
- * @date: 2020/6/19 20:42
- * @version: V1.0
- **/
+ * @author CX
+ * @PACKAGENAME:com.cx.config
+ * @ClassName: MinioProperties
+ * @Description: TODO(这里用一句话描述这个类的作用)
+ * @date 2020/9/2015:50
+ */
 @ConfigurationProperties(prefix = "minio")
 @Data
 public class MinioProperties {

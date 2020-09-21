@@ -9,11 +9,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @Description: TODO
- * @author: LH
- * @date: 2020/6/19 20:46
- * @version: V1.0
- **/
+ * @author CX
+ * @PACKAGENAME:com.cx.config
+ * @ClassName: MinioConfig
+ * @Description: TODO(这里用一句话描述这个类的作用)
+ * @date 2020/9/2015:50
+ */
 @Configuration
 @EnableConfigurationProperties(MinioProperties.class)
 public class MinioConfig {

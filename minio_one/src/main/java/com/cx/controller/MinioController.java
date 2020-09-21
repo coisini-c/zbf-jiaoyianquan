@@ -14,11 +14,12 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.InputStream;
 
 /**
- * @Description: TODO
- * @author: LH
- * @date: 2020/6/19 20:52
- * @version: V1.0
- **/
+ * @author CX
+ * @PACKAGENAME:com.cx.controller
+ * @ClassName: MinioController
+ * @Description: TODO(这里用一句话描述这个类的作用)
+ * @date 2020/9/2015:50
+ */
 @RestController
 @RequestMapping("minio")
 @CrossOrigin
